@@ -1,0 +1,50 @@
+<ion-content>
+  <ion-content class="formRegister">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="card">
+          <div class="card-header">
+            <h3>Register</h3>
+          </div>
+          <div padding class="card-body form-content">
+            <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control" formControlName="email">
+              </div>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.email">
+                  <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+              <div class="input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" class="form-control" formControlName="password">
+              </div>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.password">
+                  <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+              <div class="row align-items-center remember">
+                <input type="checkbox">Remember Me
+              </div>
+              <button class="submit-btn login_btn" expand="block" type="submit" [disabled]="!validations_form.valid">Register</button>
+              <label class="error-message">{{errorMessage}}</label>
+              <label class="success-message">{{successMessage}}</label>
+            </form>
+            <p class="go-to-login">Already have an account? <a (click)="goLoginPage()">Try to Log In.</a></p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </ion-content>
+</ion-content>

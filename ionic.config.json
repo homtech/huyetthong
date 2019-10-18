@@ -1,0 +1,7 @@
+{
+  "name": "huyetthong2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
